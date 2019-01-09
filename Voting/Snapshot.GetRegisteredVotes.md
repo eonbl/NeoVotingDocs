@@ -1,6 +1,4 @@
-# Wallet.GetRegisteredVotes Method ()
-
-Votes for 
+# Snapshot.GetRegisteredVotes Method ()
 
 Namespace: [Neo.SmartContract.Framework.Services.Neo](../../neo.md)
 
@@ -27,7 +25,10 @@ public class Contract1: FunctionCode
 {
 	public static void Main()
 	{
-		return Program.Snapshot.GetRegisteredVotes();
+		Dictionary<ECPoint, Fixed8> d = Program.Snapshot.GetRegisteredVotes();
+		foreach (KeyValuePair<DateTime, string> kvp in d) {
+			Console.WriteLine("Candidate = {0}, Votes = {1}", kvp.Key, kvp.Value);
+		}
 	}
 }
 ```
