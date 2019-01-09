@@ -29,8 +29,6 @@ public class Contract1: FunctionCode
 	{
 		return Program.Snapshot.GetRegisteredVotes();
 	}
-
-
 }
 ```
 
