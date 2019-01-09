@@ -12,7 +12,7 @@ Assembly: Neo.SmartContract.Framework
 public extern bool Vote(NeoSystem system, UInt160 scriptHash, byte[] candidates)
 ```
 
-Parameters:
+### Parameters
 
 system: NeoSystem containing reference to the blockchain and your local node
 
@@ -20,7 +20,9 @@ scriptHash: address of account that is voting
 
 candidates: list of candidates' public keys you wish to vote for, converted to a byte array
 
-Return Value: True if executed with no runtime errors
+### Returns
+
+True if executed with no runtime errors, False otherwise
 
 ## Example
 
