@@ -1,4 +1,4 @@
-# Snapshot.GetRegisteredVotes Method ()
+# Wallet.GetRegisteredVotes Method ()
 
 Votes for 
 
