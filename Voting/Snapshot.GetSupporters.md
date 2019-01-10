@@ -27,7 +27,8 @@ public class Contract1: FunctionCode
 {
 	public static void Main()
 	{
-		Dictionary<ECPoint, IEnumerable<UInt160>> d = Snapshot.GetSupporters();
+		Snapshot snapshot = Blockchain.Singleton.GetSnapshot();
+		Dictionary<ECPoint, IEnumerable<UInt160>> d = snapshot.GetSupporters();
 		foreach (KeyValuePair<ECPoint, IEnumerable<UInt160>> kvp in d) {
 			Console.WriteLine("Candidate = {0}, supporters' script hash = ", kvp.Key);
 			foreach (UInt160 scriptHash in kvp.Value) {
