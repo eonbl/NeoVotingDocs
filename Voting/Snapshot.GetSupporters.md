@@ -1,5 +1,7 @@
 # Snapshot.GetSupporters Method ()
 
+Gets each candidate's supporters (the accounts that voted for each candidate)
+
 Namespace: [Neo.SmartContract.Framework.Services.Neo](../../neo.md)
 
 Assembly: Neo.SmartContract.Framework
@@ -7,16 +9,16 @@ Assembly: Neo.SmartContract.Framework
 ## Syntax
 
 ```c#
-public IEnumerable<UInt160> GetSupporters(ECPoint pubKey)
+public Dictionary<ECPoint, IEnumerable<UInt160>> GetSupporters()
 ```
 
 ### Parameters
 
-pubkey: the public key of a candidate
+(none)
 
 ### Returns
 
-a dictionary of the candidates' public keys and their supporters (nodes that voted for this candidate)
+a dictionary of the candidates' public keys and their supporters's script hashes (accounts that voted for the candidate)
 
 ## Example
 
@@ -25,11 +27,11 @@ public class Contract1: FunctionCode
 {
 	public static void Main()
 	{
-		Dictionary<ECPoint, IEnumerable<UInt160>> d = Program.Snapshot.GetSupporters();
-		foreach (KeyValuePair<ECPoint, IEnumerable<Fixed8>> kvp in d) {
-			Console.WriteLine("Candidate = {0}, supporters' addresses = ", kvp.Key);
-			foreach (Fixed8 address in kvp.Value) {
-				Console.WriteLine("\t{0}", address);
+		Dictionary<ECPoint, IEnumerable<UInt160>> d = Snapshot.GetSupporters();
+		foreach (KeyValuePair<ECPoint, IEnumerable<UInt160>> kvp in d) {
+			Console.WriteLine("Candidate = {0}, supporters' script hash = ", kvp.Key);
+			foreach (UInt160 scriptHash in kvp.Value) {
+				Console.WriteLine("\t{0}", scriptHash);
 			}
 		}
 	}
