@@ -16,8 +16,8 @@ Assembly: Neo.SmartContract.Framework
 | ![](https://i-msdn.sec.s-msft.com/dynimg/IC91302.jpeg) | [Snapshot.GetSupporters(ECPoint)](Voting/Snapshot.GetSupporters(ECPoint).md) | Returns a list of addresses that voted for the specified public key |
 
 # How Voting Works
-See [How Voting Works in NEO](https://github.com/taomo-eo/docs/blob/master/Voting-Mechanism/How-Voting-Works-In-NEO.md)
-for information that a NEO holder should know in order to vote. What follows is a more technical explanation oriented toward developers.
+Read [How Voting Works in NEO](https://github.com/taomo-eo/docs/blob/master/Voting-Mechanism/How-Voting-Works-In-NEO.md)
+first to learn how voting works at a high level. What follows is a more technical explanation oriented toward developers.
 
 Because transactions are what are recorded on the NEO ledger, voting is implemented as a transaction. In particular, 
 when [Vote(system, scriptHash, candidates)](Voting/Wallet.Vote.md) is called, a [StateTransaction](https://github.com/neo-project/neo/blob/master/neo/Network/P2P/Payloads/StateTransaction.cs) is created
@@ -39,8 +39,8 @@ Votes are transferred when NEO is transferred. That is, when x amount of NEO is 
 This is updated in real time. The paragraph below explains how this works.
 
 The top N candidates become consensus nodes, where N is determined by the algorithm described [here](https://neo-ngd.github.io/reference/How-To-Become-NEO-Consensus-Node.html#42-voting). 
-The way this works is when `GetValidators(transactions)` is called, GetValidators first takes a [snapshot](https://github.com/neo-project/neo/blob/master/neo/Persistence/Snapshot.cs) of the blockchain
+The way this works is when `GetValidators(transactions)` is called, GetValidators first takes a [Snapshot](https://github.com/neo-project/neo/blob/master/neo/Persistence/Snapshot.cs) of the blockchain
 and updates the NEO for each account based on `transactions` while simultaneously modifying the votes of each candidate voted for by those accounts according to the NEO transfers in `transactions`.
-Then the registered candidates with a positive number of votes are combined with the active standby validators, and this list is sorted to find the top N nodes, which are returned as the new validators (consensus nodes).
-If this list has length less than N, standby validators are added (i.e., become active) to reach N. These are the new consensus nodes.
+Then the registered candidates with a positive number of votes are combined with the active standby validators, and this list is sorted to find the N nodes with the most votes, which are returned as the new validators (consensus nodes).
+If this list has length less than N, inactive standby validators become active and are added to the validator list until its length reaches N. Thus, there will be N new consensus nodes.
 
