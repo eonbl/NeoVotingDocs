@@ -39,6 +39,6 @@ public class Contract1: FunctionCode
 		}
 	}
 }
-
+```
 
 [Back](../Voting.md)
