@@ -1,10 +1,12 @@
 # Wallet.Vote Method (NeoSystem, UInt160, byte[])
 
-Votes for 
+Votes for candidates
 
 Namespace: [Neo.SmartContract.Framework.Services.Neo](../../neo.md)
 
 Assembly: Neo.SmartContract.Framework
+
+[Code](https://github.com/eonbl/neo/blob/votingSDK/neo/Wallets/Wallet.cs)
 
 ## Syntax
 
@@ -16,7 +18,7 @@ public extern bool Vote(NeoSystem system, UInt160 scriptHash, byte[] candidates)
 
 system: NeoSystem containing reference to the blockchain and your local node
 
-scriptHash: address of account that is voting
+scriptHash: script hash (decoded address) of account that is voting. You can call address.ToScriptHash() to get a script hash from an address
 
 candidates: list of candidates' public keys you wish to vote for, converted to a byte array
 

@@ -6,6 +6,8 @@ Namespace: [Neo.SmartContract.Framework.Services.Neo](../../neo.md)
 
 Assembly: Neo.SmartContract.Framework
 
+[Code](https://github.com/eonbl/neo/blob/votingSDK/neo/Persistence/Snapshot.cs)
+
 ## Syntax
 
 ```c#
